@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
+      "projectPath": "C:\\Users\\Admin\\Source\\Repos\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Source\\Repos\\Mid_Assignment\\TestWebAPI\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

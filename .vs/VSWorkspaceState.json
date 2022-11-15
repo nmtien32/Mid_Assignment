@@ -1,18 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\my-app",
-    "\\my-app\\src",
-    "\\my-app\\src\\Components\\Css",
-    "\\my-app\\src\\Components\\Forms",
-    "\\my-app\\src\\Pages",
-    "\\TestWebAPI\\TestWebAPI\\obj",
-    "\\TestWebAPI\\TestWebAPI\\obj\\Release",
-    "\\TestWebAPI\\TestWebAPI\\obj\\Release\\net6.0",
-    "\\TestWebAPI\\TestWebAPI\\Services",
-    "\\TestWebAPI\\TestWebAPI\\Services\\Implements",
-    "\\TestWebAPI\\TestWebAPI\\Services\\Interfaces"
+    ""
   ],
-  "SelectedNode": "\\my-app\\src\\setupTests.js",
+  "SelectedNode": "\\TestWebAPI.sln",
   "PreviewInSolutionExplorer": false
 }

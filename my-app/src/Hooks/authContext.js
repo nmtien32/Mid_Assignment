@@ -1,10 +1,22 @@
-import { useAuthContext } from "../Hooks/authContext";
-import { Navigate } from "react-router-dom";
+import { createContext, useContext, useState } from "react";
 
-function RequiredAuth(props) {
-    const { children } = props;
-    const { isAuthenticated } = useAuthContext();
-    return isAuthenticated ? children : <Navigate to="/login" />;
-}
+const AuthContext = createContext({
+    isAuthenticated: false,
+    setIsAuthenticated: () => { },
+});
 
-export default RequiredAuth;
+export const useAuthContext = () => useContext(AuthContext);
+
+const AuthProvider = ({ children }) => {
+    const token = localStorage.getItem("access-token");
+
+    const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+
+    const contextValue = { isAuthenticated, setIsAuthenticated };
+
+    return (
+        <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    );
+};
+
+export default AuthProvider;
