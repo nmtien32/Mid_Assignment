@@ -31,7 +31,6 @@ D:\Nashtech\New folder\TestWebApi\Test.Data\obj\Debug\net6.0\ref\Test.Data.dll
 D:\Nashtech\New folder\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.runtimeconfig.json
 D:\Nashtech\New folder\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.genruntimeconfig.cache
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.deps.json
-D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.runtimeconfig.json
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.dll
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.pdb
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Common.dll
@@ -45,5 +44,6 @@ D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.cspro
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.dll
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\refint\Test.Data.dll
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.pdb
-D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.genruntimeconfig.cache
 D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\ref\Test.Data.dll
+D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\bin\Debug\net6.0\Test.Data.runtimeconfig.json
+D:\Nashtech\Mid_Assignment\TestWebApi\Test.Data\obj\Debug\net6.0\Test.Data.genruntimeconfig.cache

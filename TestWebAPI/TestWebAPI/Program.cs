@@ -19,7 +19,7 @@ builder.Services.AddDbContext<TestContext>(opt =>
 builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<IBookService, BookService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<IBookBorrowingRequestService, BookBorrowingRequestService>();
+//builder.Services.AddTransient<IBookBorrowingRequestService, BookBorrowingRequestService>();
 
 builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {
