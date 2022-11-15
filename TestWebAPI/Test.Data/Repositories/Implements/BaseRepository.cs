@@ -25,14 +25,12 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         return new EntityDatabaseTransaction(_context);
     }
-
     public bool Delete(T entity)
     {
         _dbSet.Remove(entity);
 
         return true;
     }
-
     public T? Get(Expression<Func<T, bool>>? predicate = null)
     {
         return predicate == null ? _dbSet.FirstOrDefault() : _dbSet.FirstOrDefault(predicate);

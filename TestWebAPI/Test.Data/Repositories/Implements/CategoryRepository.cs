@@ -1,6 +1,5 @@
 using Test.Data;
 using Test.Data.Entities;
-using TestWebApi.Repositories;
 
 namespace TestWebApi.Repositories
 {

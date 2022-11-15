@@ -5,7 +5,6 @@ using TestWebApi.Repositories.Interfaces;
 using TestWebApi.Services;
 using TestWebApi.Services.Interfaces;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -13,12 +12,16 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
                       policy =>
                       {
-                          policy.WithOrigins("https://localhost:7123",
+                          policy.WithOrigins("https://localhost:7233",
                                               "http://localhost:3000");
                       });
 });
+
+var configuration = builder.Configuration;
 builder.Services.AddDbContext<BookContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnString")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnString"))
+);
+
 
 builder.Services.AddControllers();
 
@@ -29,18 +32,22 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IBookService, BookService>();
 
 builder.Services.AddTransient<ICategoryService, CategoryService>();
-var configuration = builder.Configuration;
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true)
+                    .AllowCredentials());
 
 app.UseHttpsRedirection();
 

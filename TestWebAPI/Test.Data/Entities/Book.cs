@@ -23,5 +23,7 @@ namespace Test.Data.Entities
         public int CategoryId { get; set; }
 
         public virtual Category? Category { get; set; }
+        public ICollection<BorrowingRequestDetail>? Details { get; set; }
+
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xM8kF9kxbY6AvBM5S9SjrDb5n1ipw95nprlDL7GehCh4DHA0vmXnSROsNwCSdDoHZ6fbznPxAqjblxw4kvjsJQ==",
+  "dgSpecHash": "lqXqgb71ywwFEwWlAxetiigdV2Hkim9VbM3k/39tRC+INwIFtcbaZbKQSpWSH9ivi+NIkqctddW/DJB1g1NAmA==",
   "success": true,
-  "projectFilePath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj",
+  "projectFilePath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

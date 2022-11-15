@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\TestWebAPI\\TestWebAPI.csproj": {}
+    "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\TestWebAPI\\TestWebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj": {
+    "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj",
+        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\obj\\",
+        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,34 +55,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\Test.Data.csproj": {
+    "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\Test.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\Test.Data.csproj",
+        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\Test.Data.csproj",
         "projectName": "Test.Data",
-        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\Test.Data.csproj",
+        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\Test.Data.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\obj\\",
+        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj": {
-                "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Common\\Common.csproj"
+              "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj": {
+                "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Common\\Common.csproj"
               }
             }
           }
@@ -126,34 +130,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\TestWebAPI\\TestWebAPI.csproj": {
+    "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\TestWebAPI\\TestWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\TestWebAPI\\TestWebAPI.csproj",
+        "projectUniqueName": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\TestWebAPI\\TestWebAPI.csproj",
         "projectName": "TestWebAPI",
-        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\TestWebAPI\\TestWebAPI.csproj",
+        "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\TestWebAPI\\TestWebAPI.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\TestWebAPI\\obj\\",
+        "outputPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\TestWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\Test.Data.csproj": {
-                "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebApi\\Test.Data\\Test.Data.csproj"
+              "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\Test.Data.csproj": {
+                "projectPath": "D:\\Nashtech\\Mid_Assignment\\TestWebAPI\\Test.Data\\Test.Data.csproj"
               }
             }
           }
@@ -170,17 +176,17 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[7.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[7.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -206,7 +212,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
