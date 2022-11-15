@@ -1,11 +1,14 @@
+using Common.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TestWebApi.Services.Interfaces;
-using TestWebApi.Models.Books;
+using TestWebAPI.Models.Requests;
+using TestWebAPI.Services.Interfaces;
 
-namespace TestWebApi.Controllers
+namespace TestWebAPI.Controllers
 {
+    [Authorize]
+    [Route("api")]
     [ApiController]
-    [Route("[controller]")]
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -15,35 +18,93 @@ namespace TestWebApi.Controllers
             _bookService = bookService;
         }
 
-        [HttpPost]
-        public AddBookResponse? Add([FromBody] AddBookRequest addBookRequest)
+        [AllowAnonymous]
+        [HttpGet("test")]
+        public async Task<ActionResult> Index()
         {
-
-            return _bookService.Create(addBookRequest);
+            return Ok("Test");
         }
 
-        [HttpGet]
-        public IEnumerable<GetBookResponse> GetAll()
+        [AllowAnonymous]
+        [HttpGet("book")]
+        public async Task<ActionResult> GetBook()
         {
-            return _bookService.GetAll();
+            var result = await _bookService.Get();
+            return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public GetBookResponse? GetById(int id)
+        [AllowAnonymous]
+        [HttpGet("book/detail/{bookId}")]
+        public async Task<ActionResult> GetBookById(int bookId)
         {
-            return _bookService.GetById(id);
+            var result = await _bookService.Get(bookId);
+            return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public UpdateBookResponse? Update(int id, [FromBody] UpdateBookRequest updateBookRequest)
+
+        [AllowAnonymous]
+        [HttpGet("book/{bookId}")]
+        public async Task<ActionResult> GetBookQueryAsync(int pageNumber, int pageSize,
+            string? name, int? categoryId, BookSortEnum? sortOption)
         {
-            return _bookService.Update(id, updateBookRequest);
+            var queryModel = new BookQueryModel
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Name = name,
+                CategoryID = categoryId,
+                SortOption = sortOption
+            };
+
+            var result = await _bookService.GetPaginationAsync(queryModel);
+            return Ok(result);
+
         }
 
-        [HttpDelete("{id}")]
-        public bool Delete(int id)
+        [AllowAnonymous]
+        [HttpDelete("book/{bookId}")]
+        public async Task<ActionResult> DeleteBook  (int bookId)
         {
-            return _bookService.Delete(id);
+            var result = await _bookService.DeleteBook(bookId);
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("book")]
+        public async Task<IActionResult> CreateBook([FromBody] AddBookModel book)
+        {
+            try
+            {
+                var result = await _bookService.CreateBook(book);
+
+                if (result == null) return NotFound();
+
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Unexpected Error!" + ex);
+            }
+        }
+
+
+        [AllowAnonymous]
+        [HttpPut("book/{bookId}")]
+        public async Task<IActionResult> UpdateBook(int bookId, [FromBody] AddBookModel updateModel)
+        {
+            if (updateModel == null) return BadRequest();
+
+            try
+            {
+                var updatedBook = await _bookService.UpdateBook(bookId, updateModel);
+
+                return updatedBook != null ? Ok(updatedBook) : StatusCode(500);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Unexpected Error!" + ex);
+            }
         }
     }
 }

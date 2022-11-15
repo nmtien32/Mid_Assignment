@@ -1,11 +1,14 @@
+using Common.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TestWebApi.Models.Categories;
-using TestWebApi.Services.Interfaces;
+using TestWebAPI.Models.Requests;
+using TestWebAPI.Services.Interfaces;
 
-namespace TestWebApi.Controllers
+namespace TestWebAPI.Controllers
 {
+    [Authorize]
+    [Route("api")]
     [ApiController]
-    [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
@@ -15,35 +18,65 @@ namespace TestWebApi.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpPost]
-        public AddCateResponse? Add([FromBody] AddCateRequest addCategoryRequest)
+        [AllowAnonymous]
+        [HttpGet("category")]
+        public async Task<IActionResult> GetCategory()
         {
-            Console.WriteLine("add");
-            return _categoryService.Create(addCategoryRequest);
+            var result = await _categoryService.Get();
+            return Ok(result);
         }
 
-        [HttpGet]
-        public IEnumerable<GetCateResponse> GetAll()
+        [AllowAnonymous]
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetCategory(int categoryId)
         {
-            return _categoryService.GetAll();
+            var result = await _categoryService.Get(categoryId);
+
+            return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public GetCateResponse? GetById(int id)
+        [AllowAnonymous]
+        [HttpPost("category")]
+        public async Task<IActionResult> CreateCategory([FromBody] AddCategoryModel category)
         {
-            return _categoryService.GetById(id);
+            try
+            {
+                var result = await _categoryService.CreateCategory(category);
+
+                if (result == null) return NotFound();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Unexpected Error!" + ex);
+            }
         }
 
-        [HttpPut("{id}")]
-        public UpdateCateResponse? Update(int id, [FromBody] UpdateCateRequest updateCategoryRequest)
+        [AllowAnonymous]
+        [HttpPut("category/{categoryId}")]
+        public async Task<IActionResult> UpdateCategory(int categoryId, [FromBody] AddCategoryModel updateModel)
         {
-            return _categoryService.Update(id, updateCategoryRequest);
+            if (updateModel == null) return BadRequest();
+
+            try
+            {
+                var updatedCategory = await _categoryService.UpdateCategory(categoryId, updateModel);
+
+                return updatedCategory != null ? Ok(updatedCategory) : StatusCode(500);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Unexpected Error!" + ex);
+            }
         }
 
-        [HttpDelete("{id}")]
-        public bool Delete(int id)
+        [AllowAnonymous]
+        [HttpDelete("category/{categoryId}")]
+        public async Task<IActionResult> DeleteCategory(int categoryId)
         {
-            return _categoryService.Delete(id);
+            var result = await _categoryService.DeleteCategory(categoryId);
+            return Ok(result);
         }
     }
 }

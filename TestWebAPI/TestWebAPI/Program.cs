@@ -1,40 +1,48 @@
+using Common.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Test.Data;
-using TestWebApi.Repositories;
-using TestWebApi.Repositories.Interfaces;
-using TestWebApi.Services;
-using TestWebApi.Services.Interfaces;
+using TestWebAPI.Services.Implements;
+using TestWebAPI.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+builder.Services.AddControllers();
+var configuration = builder.Configuration;
+builder.Services.AddDbContext<TestContext>(opt =>
 {
-    options.AddDefaultPolicy(
-                      policy =>
-                      {
-                          policy.WithOrigins("https://localhost:7233",
-                                              "http://localhost:3000");
-                      });
+    opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
 
-var configuration = builder.Configuration;
-builder.Services.AddDbContext<BookContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnString"))
-);
-
-
-builder.Services.AddControllers();
-
-builder.Services.AddTransient<IBookRepository, BookRepository>();
-
-builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
-
+builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<IBookService, BookService>();
-
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IBookBorrowingRequestService, BookBorrowingRequestService>();
+
+builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
+{
+    build.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+}));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+ options =>
+ {
+     options.RequireHttpsMetadata = false;
+     options.SaveToken = true;
+     options.TokenValidationParameters = new TokenValidationParameters
+     {
+         ValidateIssuer = true,
+         ValidateAudience = true,
+         ValidIssuer = JwtConstant.Issuer,
+         ValidAudience = JwtConstant.Audience,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtConstant.Key))
+     };
+ });
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -43,13 +51,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(x => x
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .SetIsOriginAllowed(origin => true)
-                    .AllowCredentials());
+app.UseCors("corspolicy");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

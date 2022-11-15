@@ -1,29 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Test.Data.Entities
 {
-    public class Book : BaseEntity
+    public class Book
     {
-        [Required, MaxLength(50)]
-        public string? Name { get; set; }
-
-        [Required, MaxLength(50)]
-        public string? Author { get; set; }
-
-        [Required, MaxLength(50)]
-        public string? Publisher { get; set; }
-
-        [Required]
-        public int Price { get; set; }
-
-        [Required]
-        public int YearOfPublication { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
-
-        public virtual Category? Category { get; set; }
-        public ICollection<BorrowingRequestDetail>? Details { get; set; }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BookId { get; set; }
+        public string? Title { get; set; }
+        public Category Category { get; set; }
     }
 }

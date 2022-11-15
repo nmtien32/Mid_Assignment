@@ -1,15 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Test.Data.Entities
 {
-    public class Category : BaseEntity
+    public class Category 
     {
-        [Required, MaxLength(50)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CategoryId { get; set; }
         public string? Name { get; set; }
 
-        [Required, MaxLength(1024)]
-        public string? Description { get; set; }
-
-        public ICollection<Book>? Books { get; set; }
+        //public ICollection<Book>? Books { get; set; }
     }
 }
