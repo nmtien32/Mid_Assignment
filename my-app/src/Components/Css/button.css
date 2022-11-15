@@ -1,0 +1,53 @@
+.updateButton {
+    background-color: blue;
+    color: white;
+    border-color: white;
+}
+
+.detailButton {
+    background-color: green;
+    color: white;
+    border-color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center1 {
+    text-align: center;
+}
+
+.deleteButton {
+    background-color: red;
+    color: white;
+    border-color: white;
+}
+
+.createButton {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.submitButton {
+    background-color: blue;
+    color: white;
+    border-color: white;
+}
+
+.backButton {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.logoutButton {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.loginButton {
+    text-align: center;
+}

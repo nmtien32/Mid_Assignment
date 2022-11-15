@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Space, Table } from "antd";
@@ -5,45 +6,46 @@ import "../Components/Css/button.css";
 import jwt_decode from "jwt-decode";
 import AxiosClient from "../Components/axiosClient";
 
-const { Column } = Table;
+const { Column, ColumnGroup } = Table;
 
-function Categories() {
+function Books() {
     let token = localStorage.getItem("access-token");
     const decoded = jwt_decode(token);
 
-    const [category, setCategory] = useState([]);
+    const [book, setBook] = useState([]);
 
     const navigate = useNavigate();
 
     const handleUpdate = (id) => {
-        navigate(`/category/update/${id}`);
+        navigate(`/book/update/${id}`);
     };
 
     const handleAdd = () => {
-        navigate(`/category/create`);
+        navigate(`/book/create`);
     };
 
     const deleteABook = async (id) => {
-        await AxiosClient.delete(`/category/${id}`);
+        await AxiosClient.delete(`/book/${id}`);
     };
 
     const handleDelete = (id) => {
         var checkingDelete = window.confirm(
-            `Do you want to delete category with id: ${id}`
+            `Do you want to delete book with id: ${id}`
         );
         if (checkingDelete) {
-            deleteABook(id)
+            deleteABook(id);
+
             window.location.reload();
         }
     };
 
-    const getAllCategories = async () => {
-        let response = await AxiosClient.get("/category");
-        setCategory(response.data);
+    const getAllBooks = async () => {
+        let response = await AxiosClient.get("/book");
+        setBook(response.data);
     };
 
     useEffect(() => {
-        getAllCategories()
+        getAllBooks();
     }, []);
 
     return (
@@ -52,21 +54,34 @@ function Categories() {
                 {decoded[
                     "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
                 ] === "SuperAdmin" && (
-                        <div class="text-center1">
+                        <div class="text-center">
                             <button class="createButton" onClick={handleAdd}>
-                                Add Category
+                                Add Book
                             </button>
                         </div>
                     )}
+
                 <div>
-                    <Table dataSource={category} pagination={{ pageSize: 10 }} key="1">
+                    <Table dataSource={book} pagination={{ pageSize: 10 }} key="1">
                         <Column
-                            title="Category Id"
-                            dataIndex="categoryId"
-                            sorter={(a, b) => a.categoryId - b.categoryId}
-                            key="1"
+                            title="Book Id"
+                            dataIndex="bookId"
+                            sorter={(a, b) => a.bookId - b.bookId}
+                            key={book.bookId}
                         />
-                        <Column title="Category Name" dataIndex="name" key="2" />
+                        <Column title="Title" dataIndex="title" key={book.title} />
+                        <ColumnGroup title="Category">
+                            <Column
+                                title="Category Id"
+                                key={book.categoryId}
+                                render={(_, record) => <p>{record.category.categoryId}</p>}
+                            />
+                            <Column
+                                title="Category Name"
+                                key={book.name}
+                                render={(_, record) => <p>{record.category.name}</p>}
+                            />
+                        </ColumnGroup>
                         {decoded[
                             "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
                         ] === "SuperAdmin" && (
@@ -77,12 +92,12 @@ function Categories() {
                                         <Space size="middle">
                                             <button
                                                 class="updateButton"
-                                                onClick={() => handleUpdate(record.categoryId)} > Edit {record.firstName}
+                                                onClick={() => handleUpdate(record.bookId)} > Edit {record.firstName}
                                             </button>
                                             <button
                                                 class="deleteButton"
-                                                value={record.categoryId}
-                                                onClick={() => handleDelete(record.categoryId)} > Delete
+                                                value={record.bookId}
+                                                onClick={() => handleDelete(record.bookId)} > Delete
                                             </button>
                                         </Space>
                                     )}
@@ -95,4 +110,4 @@ function Categories() {
     );
 }
 
-export default Categories;
+export default Books;
